@@ -19,13 +19,11 @@ call_user_func(function()
     if ($server->serverType != RaftExample\RaftServer::TYPE_LEADER) {
         foreach (config('raft')['servers'] as $serv) {
             if ($serv['id'] == $server->votedFor) {
-                //file_put_contents('debug.log', serialize(service_args()) . PHP_EOL, FILE_APPEND);
                 header('Location: http://' . $serv['address'] . $_SERVER['REQUEST_URI'], true, 307);
                 die();
             }
         }
     }
-    file_put_contents('debug.log', serialize(service_args()) . PHP_EOL, FILE_APPEND);
     $data = service_args();
     $server->commitIndex++;
     $server->lastApplied++;
