@@ -100,7 +100,7 @@ class Cli
             'leaderId' => $raftServer->serverId,
             'prevLogIndex' => $log['index'],
             'prevLogTerm' => $log['term'],
-            'entries' => urlencode(json_encode($log)),// TODO
+            'entries' => urlencode(json_encode($raftServer->log)),// TODO
             'leaderCommit' => $raftServer->commitIndex,
         ];
         $config = config('raft');

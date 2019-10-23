@@ -546,6 +546,7 @@ function remote_post($url, $data = [], $timeout = 3, $retry = 3, array $headers 
     $ch = curl_init();
 
     curl_setopt_array($ch, [
+        CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_URL => $url,
         CURLOPT_POST => 1,
         CURLOPT_TIMEOUT => $timeout,

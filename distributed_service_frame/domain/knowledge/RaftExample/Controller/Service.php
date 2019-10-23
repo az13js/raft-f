@@ -19,7 +19,10 @@ class Service
         $leaderCommit = $_GET['leaderCommit'];
         $server = RaftServer::getRaftServer();
         // TODO
+        $server->votedFor = $leaderId;
         $server->log = $entries;
+        $server->commitIndex = $leaderCommit;
+        $server->currentTerm = $term;
         $server->raftSave();
         switch ($server->serverType) {
             case RaftServer::TYPE_FOLLOWER:
@@ -40,7 +43,7 @@ class Service
                     }
                 }
                 if ($server->log[$prevLogIndex - 1]['term']) {
-                    
+
                 }
                 break;
             default:

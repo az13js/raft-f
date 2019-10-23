@@ -20,7 +20,7 @@ class RaftServer
     // 原文定义的一系列参数
     public $currentTerm   = 0;      // 周期
     public $votedFor      = null;   // 候选人id
-    public $log           = [];     // 日志实体
+    public $log           = [['term' => 0, 'index' => 0]];     // 日志实体
     public $commitIndex   = 0;      // 已提交的最大的日志实体的索引
     public $lastApplied   = 0;      // 已应用到状态机的最大的实体索引
 
@@ -57,7 +57,7 @@ class RaftServer
         } else {
             return false;
         }
-        return cache_set('raft_server_' . $this->serverId, $this, 1 * 60);
+        return cache_set('raft_server_' . $this->serverId, $this, 60 * 60);
     }
 
     public static function getRaftServerById(int $server_id): RaftServer
@@ -65,7 +65,7 @@ class RaftServer
         $server = cache_get('raft_server_' . $server_id);
         if (false === $server) {
             $server = new RaftServer($server_id);
-            cache_set('raft_server_' . $server_id, $server, 1 * 60);
+            cache_set('raft_server_' . $server_id, $server, 60 * 60);
         }
         return $server;
     }

@@ -7,27 +7,27 @@ return [
     'servers' => [
         [
             'id' => 1,
-            'address' => '127.0.0.1:8083',
+            'address' => '127.0.0.1:8092',
             'host' => 'service1.share3nd.com',
         ],
         [
             'id' => 2,
-            'address' => '127.0.0.1:8084',
+            'address' => '127.0.0.1:8093',
             'host' => 'service2.share3nd.com',
         ],
         [
             'id' => 3,
-            'address' => '127.0.0.1:8085',
+            'address' => '127.0.0.1:8094',
             'host' => 'service3.share3nd.com',
         ],
         [
             'id' => 4,
-            'address' => '127.0.0.1:8086',
+            'address' => '127.0.0.1:8095',
             'host' => 'service4.share3nd.com',
         ],
         [
             'id' => 5,
-            'address' => '127.0.0.1:8087',
+            'address' => '127.0.0.1:8096',
             'host' => 'service5.share3nd.com',
         ],
     ],

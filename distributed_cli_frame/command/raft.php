@@ -28,6 +28,7 @@ command('raft:watch_servers', '监视服务器', function()
         foreach ($config['servers'] as $server) {
             $raftServer = RaftExample\RaftServer::getRaftServerById($server['id']);
             echo ' ' . $raftServer->serverType . '[' . $raftServer->uuid . ']' . PHP_EOL;
+            echo '  ' . json_encode($raftServer->log) . PHP_EOL;
         }
         echo PHP_EOL;
         usleep(41667);
